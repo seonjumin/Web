@@ -105,6 +105,7 @@
 	input.value = "";
   });
   
+  //==============================================================================
   //loadStorage을 이용한 행운뽑기
     /*<button onclick="drawFortune()" id="draw_fortune">행운 뽑기</button>
 	const drawFortune = document.querySelector("#draw_fortue");
@@ -115,10 +116,10 @@
   //1.포춘종류 배열만들기
   const fortunes = [
 	"오늘은 남아서 공부해!☘",
-	"운동해야지 움직여!🌷",
-	"오늘은 맛있는 걸 먹자 🍕",
-	"집에가서 잠이나 자라!🏠🏠",
-	"너는 충분히 잘하고 있어!"
+	"운동해야지 움직여!",
+	"오늘은 맛있는 걸 먹자",
+	"집에가서 잠이나 자라!",
+	"너는 충분히 잘하고 있어!❤❤"
   ];
   //2.선택된 포춘을 저장하는 포춘변수를 초기화
   let currentFortune = "";
@@ -134,26 +135,64 @@
 		//Math.random() : 0.0 <= 난수 < 1.0보다 작은 실수
 		const index = Math.floor(
 			Math.random() * fortunes.length
-		)
+		);
+		//alert(index+"번째 행운:" + currentFortune);
 		//현재 랜덤 행운 뽑기
 		currentFortune = fortunes[index];
 		//현재 운세의 내용을 result 태그에 출력 -document.querySelector("#result")
-		currentFortne = document.querySelector("#result").textContent;
+		document.querySelector("#result").textContent = currentFortune;
   }
   //4.포춘을 저장하는 함수 정의 saveFortuen()정의
   function saveFortune(){
-
+	//1.currentFortune값이 있는가 조사
+	//  없으면 실행취소
+	if(currentFortune === ""){
+		alert("먼저 행운을 뽑아주세요");
+		return;
+	}
+	// 2. localStorage 웹브라우저 저장소에 영구저장
+	localStorage.setItem("myFortune",currentFortune);
+	//실행여부 알려줌
+	alert("행운을 저장했습니다.");
   }
   //5. 저장된 포춘을 불러옵니다. 함수 정의 loadFortuen()정의
   function loadFortune(){
-
+	//1. 로컬스토리지에서 값을 가져옵니다.
+	const saved = localStorage.getItem("myFortune");
+	//2. 읽어온 값이 비었으면 "저장 행운 없음"
+	if(saved === null){
+		alert("저장된 행운 없음");
+		return;
+	}
+	//3.읽어온 값이 있다면 #result태그에 넣음
+	currentFortune = saved;
+	//그리고 출력(textContent)
+	document.querySelector("#result").textContent = currentFortune;
   }
   //6. 저장된 포춘정보를 삭제하기. 함수정의 deleteFortuen()정의
   function deleteFortune(){
-	
+	//1. 로컬스토리지 삭제
+	localStorage.removeItem("myFortune");
+	//2. currentFortune 변수도 삭제
+	currentFortune = "";
+	//3. result html태그 삭제
+	document.querySelector("#result").textContent = "저장된 행운이 없어요";
+	//4. 삭제완료 알림
+	alert("삭제 완료");
   }
   
+  const go = document.querySelector("#go");
+  function goButtonClick(){
+	alert("집에 가자");
+  }
+  go.addEventListener("click",goButtonClick);
   
+  const home = document.querySelector("#home");
+  function homeButtonClick(){
+	alert("집 가자");
+  }
+  
+  home.addEventListener("click",homeButtonClick);
   
  
   

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>보물찾기 게임</title>
+   <link rel="stylesheet" href="./css/style.css">
+</head>
+<body>
+  <div class="game-card">
+    <h1>보물찾기 게임</h1>
+    <p>숨겨진 보물을 찾아라</p>
+  </div>
+  <hr>
+  
+  <!-- 블럭박스 -->
+  <div class="game-card">
+    <h2>클릭 점수 게임</h2>
+    <p>현재 점수: <span id="score">0</span></p>
+  </div>
+  
+  <!--  활용예제1 -->
+  <div class="game-card">
+    <h2>숫자 맞히기</h2>
+    <p><span class="highlight">1부터 50까지</span>의 숫자를 맞히세요</p>
+  </div>
+  
+  <!--  활용예제2 -->
+  <p class="game-card">현재 점수는 <span class="highlight">20점</span>입니다.</p>
+  <h3>분발해주세요</h3>
+  
+  <div class="emphasis-div">
+    <p>
+    <strong>주의:</strong>
+    게임을 시작하기 전에 이름을 입력하세요.</p>
+    <p>이번 게임은 시간 안에 정답을 맞히는 게임입니다.</p>
+  </div>
+  
+  <button onclick="lets">집</button>
+  <button id="go">가</button>
+  <button id="home">기</button>
+  <script src=./js/app.js></script>
+</body>
+</html>
